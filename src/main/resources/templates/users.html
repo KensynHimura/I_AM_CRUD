@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+</head>
+<body>
+<div th:switch="${userList}">
+    <table th:border="1" cellpadding="15">
+        <tr>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Age</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Roles</th>
+            <th bgcolor="#00008b" style="color: cornsilk">Update</th>
+            <th bgcolor="#dc143c">Delete</th>
+        </tr>
+        <tr th:each="user: ${userList}">
+            <td th:text="${user.name}">Name</td>
+            <td th:text="${user.gender}">Gender</td>
+            <td th:text="${user.age}">Age</td>
+            <td th:text="${user.username}">Username</td>
+            <td th:text="${user.password}">Password</td>
+            <td th:text="${user.roles}">Roles</td>
+            <!--        контейнер гиперссылок-->
+            <td>
+                <a th:href="@{/userinfo/{id}(id=${user.id})}">
+                    <input type="submit" value="Update">
+                </a>
+            </td>
+            <td>
+                <a th:href="@{/delete/{id}(id=${user.id})}">
+                    <input type="submit" value="Delete">
+                </a>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <div>
+        <form>
+            <a th:href="@{/addUser}">save user</a>
+        </form>
+        <br> <br>
+        <form th:action="@{/logout}">
+            <input type="submit" value="Logout">
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org/"
+      xmlns:form="http://java.sun.com/jsf/html" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New User</title>
+</head>
+<body>
+<form th:method="POST" th:action="@{/save}" th:object="${user}">
+    <input type="hidden" th:field="*{id}"/>
+    <!--    <input type="hidden" th:field="*{password}"/>-->
+    <p><label for="name">User name: </label> <input type="text" th:field="${user.name}" id="name"/></p>
+    <p><label  for="gender">User gender:</label> <select name="gender" id="gender">
+        <option th:field="${user.gender}"  value="Male">male</option>
+        <option th:field="${user.gender}"  value="Female">female</option>
+
+    </select></p>
+    <p><label for="age">User age: </label> <input type="number" th:field="${user.age}" id="age"/></p>
+    <p><label for="username">User username: </label> <input type="text" th:field="${user.username}" id="username"/></p>
+    <p><label for="password">User password: </label> <input type="text" th:field="${user.password}" id="password"/></p>
+    <p><label>User role:</label>
+        <label>ADMIN</label>
+        <input type="checkbox" th:field="*{roles}" th:value="ROLE_ADMIN"/>
+        <label>USER</label>
+        <input type="checkbox" th:field="*{roles}" th:value="ROLE_USER"/>
+
+
+        <br>
+        <input type="submit" value="Ok!">
+</form>
+<br>
+<form th:action="@{/allusers}">
+    <input type="submit" value="Back">
+</form>
+</body>
+</html>
