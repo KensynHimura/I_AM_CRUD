@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>One user</title>
@@ -9,19 +9,21 @@
     <table th:border="1" cellpadding="15">
         <tr>
             <th>Name</th>
+            <th>Lastname</th>
             <th>Gender</th>
             <th>Age</th>
+            <th>Email</th>
             <th>Username</th>
             <th>Password</th>
-            <th>Roles</th>
         </tr>
         <tr th:each="user: ${user}">
-            <td th:text="${user.name}">Name</td>
+            <td th:text="${user.firstname}">Name</td>
+            <td th:text="${user.lastname}">Lastname</td>
             <td th:text="${user.gender}">Gender</td>
             <td th:text="${user.age}">Age</td>
+            <td th:text="${user.email}">Age</td>
             <td th:text="${user.username}">Username</td>
             <td th:text="${user.password}">Password</td>
-            <td th:text="${user.roles}">Roles</td>
             <!--        контейнер гиперссылок-->
         </tr>
     </table>

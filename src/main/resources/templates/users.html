@@ -9,8 +9,10 @@
     <table th:border="1" cellpadding="15">
         <tr>
             <th>Name</th>
+            <th>Lastname</th>
             <th>Gender</th>
             <th>Age</th>
+            <th>Email</th>
             <th>Username</th>
             <th>Password</th>
             <th>Roles</th>
@@ -18,29 +20,31 @@
             <th bgcolor="#dc143c">Delete</th>
         </tr>
         <tr th:each="user: ${userList}">
-            <td th:text="${user.name}">Name</td>
-            <td th:text="${user.gender}">Gender</td>
-            <td th:text="${user.age}">Age</td>
-            <td th:text="${user.username}">Username</td>
-            <td th:text="${user.password}">Password</td>
-            <td th:text="${user.roles}">Roles</td>
-            <!--        контейнер гиперссылок-->
+        <td th:text="${user.firstname}">Name</td>
+        <td th:text="${user.lastname}">Lastname</td>
+        <td th:text="${user.gender}">Gender</td>
+        <td th:text="${user.age}">Age</td>
+        <td th:text="${user.email}">Email</td>
+        <td th:text="${user.username}">Username</td>
+        <td th:text="${user.password}">Password</td>
+        <td th:text="${user.roles}">Roles</td>
+<!--        контейнер гиперссылок-->
             <td>
-                <a th:href="@{/userinfo/{id}(id=${user.id})}">
+                <a th:href="@{/admin/userinfo/{id}(id=${user.id})}">
                     <input type="submit" value="Update">
                 </a>
             </td>
             <td>
-                <a th:href="@{/delete/{id}(id=${user.id})}">
-                    <input type="submit" value="Delete">
-                </a>
+            <a th:href="@{/admin/delete/{id}(id=${user.id})}">
+                <input type="submit" value="Delete">
+            </a>
             </td>
         </tr>
     </table>
     <br>
     <div>
         <form>
-            <a th:href="@{/addUser}">save user</a>
+        <a th:href="@{/admin/addUser}">save user</a>
         </form>
         <br> <br>
         <form th:action="@{/logout}">
@@ -48,7 +52,30 @@
         </form>
 
     </div>
-
+    <!--    <h2 th:case="null">No users yet!</h2>-->
+    <!--    <div th:case="*">-->
+    <!--        <h2>Users</h2>-->
+    <!--        <table>-->
+    <!--            <thead>-->
+    <!--            <tr>-->
+    <!--                <th bgcolor="#dc143c" style="color: darkslateblue">Name</th>-->
+    <!--                <th style="color: darkmagenta">Gender</th>-->
+    <!--                <th style="color: green">Age</th>-->
+    <!--                <th style="color: black">Delete</th>-->
+    <!--            </tr>-->
+    <!--            </thead>-->
+    <!--            <tbody>-->
+    <!--            <tr th:each="user : ${userList}">-->
+    <!--                <td th:text="${user.name}"></td>-->
+    <!--                <td th:text="${user.gender}"></td>-->
+    <!--                <td th:text="${user.age}"></td>-->
+    <!--&lt;!&ndash;                <td><a th:href="@{/edit/{id}(id=${user.id})}">Edit</a></td>&ndash;&gt;-->
+    <!--&lt;!&ndash;                <td><a th:href="@{/delete/{id}(id=${user.id})}">Delete</a></td>&ndash;&gt;-->
+    <!--            </tr>-->
+    <!--            </tbody>-->
+    <!--        </table>-->
+<!--</div>-->
+<!--<p><a href="/users/save">Add a new user</a></p>-->
 </div>
 
 </body>

@@ -13,12 +13,16 @@ import java.util.List;
 @Service
 public class UserService implements UserDetailsService {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
-    public User getUserByName(String name) {
-        return userRepository.findUserByName(name);
+    @Autowired
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
+//
+//    public User getUserByFirstname(String name) {
+//        return userRepository.findUserByUsername(name);
+//    }
 
     public List<User> listUsers() {
         return userRepository.findAll();
@@ -37,7 +41,7 @@ public class UserService implements UserDetailsService {
     }
 
     @Override
-    public User loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepository.findUserByName(username);
+    public UserDetails loadUserByUsername(String a) throws UsernameNotFoundException {
+        return userRepository.findUserByUsername(a);
     }
 }

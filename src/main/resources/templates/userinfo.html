@@ -6,16 +6,18 @@
     <title>New User</title>
 </head>
 <body>
-<form th:method="POST" th:action="@{/save}" th:object="${user}">
+<form th:method="POST" th:action="@{/admin/save}" th:object="${user}">
     <input type="hidden" th:field="*{id}"/>
-    <!--    <input type="hidden" th:field="*{password}"/>-->
-    <p><label for="name">User name: </label> <input type="text" th:field="${user.name}" id="name"/></p>
+<!--    <input type="hidden" th:field="*{password}"/>-->
+    <p><label for="name">User name: </label> <input type="text" th:field="${user.firstname}" id="name"/></p>
+    <p><label for="lastname">User lastname: </label> <input type="text" th:field="${user.lastname}" id="lastname"/></p>
     <p><label  for="gender">User gender:</label> <select name="gender" id="gender">
-        <option th:field="${user.gender}"  value="Male">male</option>
-        <option th:field="${user.gender}"  value="Female">female</option>
+                <option th:field="${user.gender}"  value="Male">male</option>
+                <option th:field="${user.gender}"  value="Female">female</option>
 
     </select></p>
     <p><label for="age">User age: </label> <input type="number" th:field="${user.age}" id="age"/></p>
+    <p><label for="email">User email: </label> <input type="text" th:field="${user.email}" id="email"/></p>
     <p><label for="username">User username: </label> <input type="text" th:field="${user.username}" id="username"/></p>
     <p><label for="password">User password: </label> <input type="text" th:field="${user.password}" id="password"/></p>
     <p><label>User role:</label>
@@ -26,10 +28,10 @@
 
 
         <br>
-        <input type="submit" value="Ok!">
+    <input type="submit" value="Ok!">
 </form>
 <br>
-<form th:action="@{/allusers}">
+<form th:action="@{/admin/allusers}">
     <input type="submit" value="Back">
 </form>
 </body>
