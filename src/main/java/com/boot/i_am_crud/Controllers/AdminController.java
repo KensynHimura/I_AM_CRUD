@@ -1,7 +1,7 @@
 package com.boot.i_am_crud.Controllers;
 
 import com.boot.i_am_crud.model.User;
-import com.boot.i_am_crud.service.UserService;
+import com.boot.i_am_crud.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -15,7 +15,7 @@ import java.util.List;
 public class AdminController {
 
     @Autowired
-    private UserService userService;
+    private UserServiceImpl userService;
 
     @Autowired
     private PasswordEncoder encoder;
@@ -36,7 +36,7 @@ public class AdminController {
     @PostMapping(value = "/save")
     public String saveOrUpdateUser(@ModelAttribute("user") User user) {
         user.setPassword(encoder.encode(user.getPassword()));
-        userService.saveUser(user);
+        userService.saveOrUpdateUser(user);
         return "redirect:/admin/allusers";
     }
 
@@ -53,7 +53,7 @@ public class AdminController {
         return "userinfo";
     }
 
-    @GetMapping("/delete/{id}")
+    @PostMapping("/delete/{id}")
     public String deleteUser(@PathVariable("id") Long id) {
         userService.deleteUser(id);
         return "redirect:/admin/allusers";

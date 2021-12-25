@@ -1,7 +1,7 @@
 package com.boot.i_am_crud.Controllers;
 
 import com.boot.i_am_crud.model.User;
-import com.boot.i_am_crud.service.UserService;
+import com.boot.i_am_crud.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class UserController {
 
-    private UserService userService;
+    private UserServiceImpl userService;
 
     @Autowired
-    public UserController(UserService userService) {
+    public UserController(UserServiceImpl userService) {
         this.userService = userService;
     }
 
