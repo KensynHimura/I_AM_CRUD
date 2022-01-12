@@ -8,7 +8,6 @@
 <body>
 <form th:method="POST" th:action="@{/admin/save}" th:object="${user}">
     <input type="hidden" th:field="*{id}"/>
-<!--    <input type="hidden" th:field="*{password}"/>-->
     <p><label for="name">User name: </label> <input type="text" th:field="${user.firstname}" id="name"/></p>
     <p><label for="lastname">User lastname: </label> <input type="text" th:field="${user.lastname}" id="lastname"/></p>
     <p><label  for="gender">User gender:</label> <select name="gender" id="gender">
@@ -20,11 +19,14 @@
     <p><label for="email">User email: </label> <input type="text" th:field="${user.email}" id="email"/></p>
     <p><label for="username">User username: </label> <input type="text" th:field="${user.username}" id="username"/></p>
     <p><label for="password">User password: </label> <input type="text" th:field="${user.password}" id="password"/></p>
-    <p><label>User role:</label>
-        <label>ADMIN</label>
-        <input type="checkbox" th:field="*{roles}" th:value="ROLE_ADMIN"/>
-        <label>USER</label>
-        <input type="checkbox" th:field="*{roles}" th:value="ROLE_USER"/>
+    <p><label for="role">User role:</label>
+        <select name="role" th:field="*{roles}">
+            <option id="role" th:each="i, num : ${roles}"
+                    th:value="${num.count}"
+                    th:text="${i}">
+            </option>
+        </select>
+    </p>
 
 
         <br>
